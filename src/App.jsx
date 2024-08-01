@@ -8,13 +8,13 @@ function App() {
   const [todos, setTodos] = useState([])
   const [showFinished,SetShowFinished] = useState(true)
 
-  useEffect(() => {
-    let notEmpty = localStorage.getItem("todos");
-    if(notEmpty){
-      let newTodos= JSON.parse(localStorage.getItem("todos"));
-      setTodos(newTodos)
-    }
-  }, [])
+  // useEffect(() => {
+  //   let notEmpty = localStorage.getItem("todos");
+  //   if(notEmpty){
+  //     let newTodos= JSON.parse(localStorage.getItem("todos"));
+  //     setTodos(newTodos)
+  //   }
+  // }, [])
   
   const inputEnter=(e)=>{
       setTodo(e.target.value)
@@ -23,7 +23,7 @@ function App() {
     if (todo != ""){
       setTodos([...todos , {id:uuidv4(), todo , isComplete:false}])
       setTodo("")
-      localStorage.setItem("todos",JSON.stringify([...todos , {id:uuidv4(), todo , isComplete:false}]))
+      // localStorage.setItem("todos",JSON.stringify([...todos , {id:uuidv4(), todo , isComplete:false}]))
     }
   }
   const editClick = (e,id)=>{
@@ -36,7 +36,7 @@ function App() {
       return item.id !=id
     })
     setTodos(newTodos);
-    localStorage.setItem("todos",JSON.stringify(newTodos))
+    // localStorage.setItem("todos",JSON.stringify(newTodos))
 
   }
   const deleteClick = (e,id)=>{
@@ -44,7 +44,7 @@ function App() {
         return item.id !=id
       })
       setTodos(newTodos);
-      localStorage.setItem("todos",JSON.stringify(newTodos))
+      // localStorage.setItem("todos",JSON.stringify(newTodos))
   }
   const checkClicked = (e)=>{
     let id = e.target.name;
@@ -54,7 +54,7 @@ function App() {
     let newTodos = [...todos];
     newTodos[index].isComplete=!newTodos[index].isComplete;
     setTodos(newTodos);
-    localStorage.setItem("todos",JSON.stringify(newTodos))
+    // localStorage.setItem("todos",JSON.stringify(newTodos))
   }
     const toggleFinished = ()=>{
       SetShowFinished(!showFinished);
